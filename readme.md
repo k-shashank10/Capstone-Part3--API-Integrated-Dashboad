@@ -22,9 +22,8 @@ Part 3/
 ├── trade_routes.csv            # International trade route characteristics
 ├── geopolitical_events.csv     # Simulated geopolitical disruptions, severity scales, and crisis logs
 └── weekly_route_operations.csv # Weekly trade route operations, delays, costs, and risk metrics
-
+```
 ---
-
 ##  Dataset Context & Scope
 This dataset simulates global supply chain operations and trade disruptions across major international trade routes from 2015 to 2026. It combines logistics, commodity markets, geopolitical events, and transportation risk factors to create a realistic environment for data analysis and operational monitoring.
 
