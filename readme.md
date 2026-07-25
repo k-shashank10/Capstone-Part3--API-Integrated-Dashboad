@@ -9,9 +9,11 @@ In compliance with the project guidelines, this application is fully self-contai
 * **Live Filtered Data Tables:** Interactive `st.dataframe` views showing row-level operational records, geopolitical disruption logs, and a CSV data download button.
 * **Live External REST API Integration:** A live connection using Python's `requests` library to fetch and parse external currency exchange data on the fly, dynamically converting freight costs.
 
+* **Live App URL:** [https://capstone-part3--api-integrated-dashboad-5cgtqcrzrgnytsgiqnxngd.streamlit.app/](https://capstone-part3--api-integrated-dashboad-5cgtqcrzrgnytsgiqnxngd.streamlit.app/)
+
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 Part 3/
