@@ -26,7 +26,7 @@ Part 3/
 └── weekly_route_operations.csv # Weekly trade route operations, delays, costs, and risk metrics
 ```
 ---
-##  Dataset Context & Scope
+## 1. Dataset Context & Scope
 This dataset simulates global supply chain operations and trade disruptions across major international trade routes from 2015 to 2026. It combines logistics, commodity markets, geopolitical events, and transportation risk factors to create a realistic environment for data analysis and operational monitoring.
 
 ### **Included Data Files**
@@ -53,27 +53,48 @@ This dataset simulates global supply chain operations and trade disruptions acro
 
 ---
 
-## External REST API Integration
+## 2. External REST API Integration
 To satisfy the live API integration requirement, this dashboard connects to a public REST endpoint using Python's requests library:
 * **API Used:** ExchangeRate-API (https://open.er-api.com).
 * **Purpose:** FFetches real-time foreign exchange conversion rates to evaluate live cost adjustments and dynamically convert freight costs across multiple base currencies (USD, EUR, GBP, INR, AUD, CAD, JPY).
 
 ---
 
-##  Reproducibility & Local Setup
+## 3. Setup & Execution Instructions
 
-To run this dashboard locally from a clean environment:
+To run this dashboard locally from a clean environment, follow these steps:
 
-1. Clone this repository and ensure weekly_route_operations.csv, trade_routes.csv, and geopolitical_events.csv are placed in the root directory.
-2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
+###  Prerequisites
+* Ensure **Python 3.8+** is installed on your local machine.
 
-3.  Launch the Streamlit application:
-''' bash
-    streamlit run app.py
+###  Repository Setup
+Clone the repository and ensure all required CSV data files (`weekly_route_operations.csv`, `trade_routes.csv`, and `geopolitical_events.csv`) are placed together in the project root directory alongside `app.py` and `data_injection.py`.
 
-## References & Data Sources
-1. Global Supply Chain Disruption Dataset (2015–2026): Created and published by Kuldeep Jangra on Kaggle. Available at Kaggle.
+###  Install Dependencies
+Open your terminal or PowerShell in the project directory and install the required Python packages:
+```bash
+pip install -r requirements.txt
+```
+### Launch The Dash board
+Launch the interactive web interface using Streamlit:
+```bash
+streamlit run app.py
+```
+Open the local browser link provided in your terminal (typically `http://localhost:8501`)
 
-2. External Live API: ExchangeRate-API (https://open.er-api.com)
+---
+## 4. References & Data Sources
+
+### Official Documentation & Libraries
+* **Streamlit Documentation:** For interactive dashboard layout, session state, and widget management. Available at: [https://docs.streamlit.io/](https://docs.streamlit.io/)
+* **Plotly Python Graphing Library:** For responsive, interactive operational charts and data visualization. Available at: [https://plotly.com/python/](https://plotly.com/python/)
+* **Requests HTTP Library:** For connecting to external currency exchange APIs. Available at: [https://requests.readthedocs.io/](https://requests.readthedocs.io/)
+
+### Academic Class Notes & Faculty Materials
+* **Class Lectures & Presentations:** Core theoretical frameworks on data product design, dashboard modularity, and real-time state management provided by faculty during lecture sessions.
+* **Faculty Code & Lab Boilerplates:** Reference scripts, structural patterns, and API integration templates shared during practical lab hours.
+* **MSSAI Curriculum Guidelines:** Applied data product scoping, UI/UX structuring standards, and deployment best practices outlined in the MSSAI curriculum framework.
+
+### Data Sources & External APIs
+* **Global Supply Chain Disruption Dataset (2015–2026):** Created and published by Kuldeep Jangra on Kaggle. Available via Kaggle
+* **ExchangeRate-API:** Public live REST endpoint for real-time currency conversion (`https://open.er-api.com`)
