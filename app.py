@@ -3,16 +3,16 @@ import pandas as pd
 import plotly.express as px
 from data_injection import load_data, fetch_live_api
 
-# --- PAGE SETUP ---
+# Page configuration for Streamlit app
 st.set_page_config(page_title="Supply Chain Dashboard", layout="wide")
 
 st.title("Global Supply Chain & Trade Disruption Dashboard")
 st.write("Welcome! Explore global trade corridors, logistics performance metrics, geopolitical risk factors, and real-time currency conversions.")
 
-# --- LOAD DATA ---
+# Loading Data
 df, geo_df = load_data()
 
-# --- SIDEBAR: LIVE API INTEGRATION & CURRENCY CONVERSION ---
+# idebar for user inputs and settings
 st.sidebar.header("🌐 Live External API")
 currencies = ["USD", "EUR", "GBP", "INR", "AUD", "CAD", "JPY"]
 base_curr = st.sidebar.selectbox("Select Base Currency", currencies)
@@ -32,7 +32,7 @@ else:
 
 st.sidebar.markdown("---")
 
-# --- SIDEBAR FILTER WIDGETS ---
+# Sidebar Widgets for Inputs from User
 st.sidebar.header("Filter Controls")
 
 if not df.empty:
@@ -52,7 +52,7 @@ else:
     filtered_df = pd.DataFrame()
     st.error("Dataset files not found in the folder.")
 
-# --- CURRENCY MULTIPLIER LOGIC ---
+# Exchange rate logic
 usd_rates = fetch_live_api("USD")
 conversion_multiplier = 1.0
 if usd_rates and base_curr in usd_rates:
@@ -62,7 +62,7 @@ display_df = filtered_df.copy()
 if not display_df.empty:
     display_df['freight_cost_converted'] = display_df['freight_cost_usd'] * conversion_multiplier
 
-# --- KEY METRICS DISPLAY ---
+# Key Metrics to Display
 if not display_df.empty:
     col1, col2, col3 = st.columns(3)
     col1.metric("Total Routes Analyzed", len(display_df))
@@ -71,7 +71,7 @@ if not display_df.empty:
 
     st.markdown("---")
 
-    # --- PLOTLY CHARTS (With clear axis labels & tooltips) ---
+    # Charts to display with Clear Lables
     st.subheader("Visual Analysis")
     
     col_a, col_b = st.columns(2)
@@ -111,7 +111,8 @@ if not display_df.empty:
     )
     st.plotly_chart(fig_country, use_container_width=True)
 
-    # --- DATA TABLE & EXPORT BUTTON ---
+    # Fucntion to Download Cleaned data
+
     st.subheader("Filtered Route Data Table")
     st.dataframe(display_df)
 
@@ -123,7 +124,7 @@ if not display_df.empty:
         mime="text/csv"
     )
 
-# --- GEOPOLITICAL EVENTS SECTION ---
+# Section for Geopolitical Events
 st.markdown("---")
 st.subheader("Geopolitical Disruptions Log")
 
